@@ -1,53 +1,54 @@
 const fs = require('fs');
 
-const  tours = JSON.parse(
-    fs.readFileSync(`${__dirname}/dev-data/data/tour-simple.json`)
+const tours = JSON.parse(
+  fs.readFileSync(`${__dirname}/dev-data/data/tour-simple.json`)
 );
-exports.checkID = (req, res, next, val) => {
+
+exports.checkid = (req, res, next, val) => {
   console.log(`Tour id is: ${val}`);
 
-if(req.params.id*1 > tours.length){
+  if (req.params.id * 1 > tours.length) {
     return res.status(404).json({
-        status:'fail',
-        message: 'Invalid ID'
+      status: 'fail',
+      message: 'Invalid ID'
     });
-}
-next();
+  }
+  next();
 };
 
 // to check body exists 
-exports.checkbody = (req,res,next) =>{
-    if(!req.body.name || !req.body.price){
-        return res.status(404).json({
-        message: 'Invalid ID'
+exports.checkbody = (req, res, next) => {
+  if (!req.body.name || !req.body.price) {
+    return res.status(404).json({
+      message: 'Invalid ID'
 
-        });
-    }
-    next();
+    });
+  }
+  next();
 };
 
-exports.getalltours = (req,res) =>{
-    console.log(req.requestTime);
-    res.status(200).json({
-     status : 'sucess',
-     requestedat : 'req.requestTime',
-     data : {
-        tours
-     }
+exports.getalltours = (req, res) => {
+  console.log(req.requestTime);
+  res.status(200).json({
+    status: 'sucess',
+    requestedat: 'req.requestTime',
+    data: {
+      tours
+    }
 
-    });
+  });
 }
 
-exports.gettour = (req,res) =>{
-    console.log(req.params);
-    const newid = req.params.id;
-    const tour= tours.find(el => el.id ===id );
-    res.status(200).json({
-        status : 'sucess',
-        data : {
-            tour
-        }
-    });
+exports.gettour = (req, res) => {
+  console.log(req.params);
+  const newid = req.params.id;
+  const tour = tours.find(el => el.id === id);
+  res.status(200).json({
+    status: 'sucess',
+    data: {
+      tour
+    }
+  });
 }
 exports.createTour = (req, res) => {
   // Generate a new ID based on the last item in the array
@@ -81,11 +82,11 @@ exports.updateTour = (req, res) => {
   });
 };
 
-exprorts.deletetour = (req,res) =>{
-    res.status(204).json({
-        status : 'sucess',
-        data :
-            null
-        
-    });
+exports.deletetour = (req, res) => {
+  res.status(204).json({
+    status: 'sucess',
+    data:
+      null
+
+  });
 };
