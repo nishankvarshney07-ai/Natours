@@ -1,11 +1,19 @@
 {
-  "dependencies": {
-    "dotenv": "^17.4.2",
-    "express": "^5.2.1",
-    "mongoose": "^9.8.0",
-    "morgan": "^1.11.0"
+  "name": "natours",
+  "version": "1.0.0",
+  "description": "learning node js,full stack web development",
+  "keywords": [
+    "node"
+  ],
+  "license": "ISC",
+  "author": "nishank",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "devDependencies": {
-    "nodemon": "^3.1.14"
+  "dependencies": {
+    "express": "^5.2.1",
+    "mongoose": "^9.8.0"
   }
 }
